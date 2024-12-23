@@ -30,12 +30,12 @@ public class firstclass2 {
 		add.click();
 		//WebElement name=driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div/div[1]/div/div[2]/input"));
 		//name.sendKeys("Amit");
-		WebElement selectElement=driver.findElement(By.xpath("//*[@id=\\\"app\\\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div/div[1]/div/div[2]/div/div/div[1]"));
-		Select select=new Select(selectElement);
-		select.selectByVisibleText("Admin");
-	    WebElement UserRole=driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div/div[1]/div/div[2]/div/div/div[1]"));
+//		WebElement selectElement=driver.findElement(By.xpath("//*[@id=\\\"app\\\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div/div[1]/div/div[2]/div/div/div[1]"));
+//		Select select=new Select(selectElement);
+//		select.selectByVisibleText("Admin");
+	    WebElement UserRole=driver.findElement(By.cssSelector("#app > div.oxd-layout.orangehrm-upgrade-layout > div.oxd-layout-container > div.oxd-layout-context > div > div > form > div:nth-child(1) > div > div:nth-child(1) > div > div:nth-child(2) > div > div > div.oxd-select-text-input"));
 		Actions actions=new Actions(driver);
-		actions.click(UserRole).keyDown(Keys.ENTER).keyDown(Keys.ENTER).perform();
+		actions.click(UserRole).keyDown(Keys.ARROW_DOWN).keyDown(Keys.ENTER).release().perform();
 //		WebElement ess=driver.findElement(By.xpath(".//div[text()='ESS']"));
 //		ess.click(); 
 		//WebElement add=driver.findElement(By.cssSelector(".//label[text()='Username']"));
