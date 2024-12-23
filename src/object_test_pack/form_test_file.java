@@ -10,7 +10,7 @@ import object_login_pack.Object_login_file;
 
 public class form_test_file {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
 WebDriver driver=new ChromeDriver();
 driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
@@ -27,7 +27,7 @@ objlog.add();
 objform.userrole();
 objform.status_txt();
 objform.username_txt("Amit chaudhary");
-objform.employee("Sriranjani D");
+objform.employee("m");
 objform.password("Amit@123");
 objform.Confpass("Amit@123");
 objform.save();

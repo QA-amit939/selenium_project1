@@ -1,9 +1,16 @@
 package object_login_pack;
+import java.time.Duration;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 public class Object_form_page {
 	
 WebDriver driver;
@@ -40,11 +47,29 @@ public void password(String Password1)
 driver.findElement(Password).sendKeys(Password1);	
 }
 
-public void employee(String Emp)
+public void employee(String Emp) throws InterruptedException
 {	
-this.emp=driver.findElement(Employee);
-Actions actions=new Actions(driver);
-actions.click(emp).sendKeys(Emp).keyDown(Keys.ARROW_DOWN).click().release().perform();
+	driver.findElement(Employee).sendKeys(Emp);
+	WebDriverWait wait=new WebDriverWait(driver, Duration.ofMillis(10000), Duration.ofMillis(9000));
+	//Wait<WebDriver> next=new FluentWait<>(driver).withTimeout(Duration.ofMillis(200))
+			//.pollingEvery(Duration.ofMillis(50)).withMessage("this is not visible")
+			//.ignoring(ElementNotInteractableException.class);
+    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@role='listbox']")));
+    System.out.println("now element is visible");
+    Thread.sleep(5000);
+    for(int i=1;i<=2;i++)
+    {
+    	driver.findElement((By.xpath("//*[@role='listbox']"))).sendKeys(Keys.ARROW_DOWN);
+    	Thread.sleep(2000);
+    	Actions actions=new Actions(driver);
+    	actions.keyDown(Keys.ARROW_DOWN).click().release().perform();
+    	//driver.findElement(Employee).sendKeys(Keys.ENTER);
+    }
+  //  driver.findElement(Employee).sendKeys(Keys.ARROW_DOWN);
+    driver.findElement((By.xpath("//*[@role='listbox']"))).sendKeys(Keys.ENTER);
+//this.emp=driver.findElement(Employee);
+//Actions actions=new Actions(driver);
+//actions.click(emp).sendKeys(Emp).keyDown(Keys.ARROW_DOWN).click().release().perform();
 }
 public void Confpass(String Conformpass)
 {
